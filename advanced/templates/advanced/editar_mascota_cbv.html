@@ -1,0 +1,12 @@
+{% extends 'home/base.html' %}
+{% block mi_contenido %}
+
+  <form action = {% url 'editar_mascota' mascota.id %} method = "POST">
+    {% csrf_token %}
+    <table>
+      {{form}}
+    </table>
+    <button>Editar</button> 
+  </form>
+
+{% endblock mi_contenido %}

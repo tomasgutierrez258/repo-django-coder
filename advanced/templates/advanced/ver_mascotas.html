@@ -1,0 +1,39 @@
+{% extends 'home/base.html' %} 
+
+{% block links %} 
+  {% load static %}
+  <link href={% static 'css/styles.css' %} rel="stylesheet" />
+  <link href={% static 'css/ver_personas.css' %} rel="stylesheet" />
+{% endblock links %} 
+
+{% block mi_contenido %}
+<p></p>
+<div class="container">
+
+  <table>
+    <tr class="table-header">
+      <th>#</th>
+      <th>Nombre</th>
+      <th>tipo</th>
+      <th>Edad</th>
+      <th>Fecha de nacimiento</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+  
+    {% for mascota in mascotas%}
+    <tr>
+      <td><strong>{{mascota.id}}</strong></td>
+      <td>{{mascota.nombre}}</td>
+      <td>{{mascota.tipo}}</td>
+      <td>{{mascota.edad}}</td>
+      <td>{{mascota.fecha_nacimiento}}</td>
+      <td><button><a class="navbar-brand" href={% url 'editar_mascota' mascota.id %}>editar</a></button></td>
+      <td><button><a class="navbar-brand" href={% url 'eliminar_mascota' mascota.id %}>eliminar</a></button></td>
+    </tr>
+    {% endfor %}
+  </table>
+
+</div>
+
+{% endblock mi_contenido%}

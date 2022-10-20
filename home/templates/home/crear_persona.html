@@ -1,33 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crear persona</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap");
+{% extends 'home/base.html' %}
+{% block mi_contenido %}
 
-      * {
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        background-color: #f2f2f2;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Roboto", sans-serif;
-      }
-      h1 {
-        margin-top:60px;
-        font-size:66px
-        color: 251b37;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>¡La persona se creó exitosamente!</h1>
-  </body>
-</html>
+  <form action = {% url 'crear_persona' %} method = "POST">
+    {% csrf_token %}
+    <table>
+      {{formulario}}
+    </table>
+    {% comment %} <input type="text" name="nombre" placeholder="Nombre">
+    <p></p>
+    <input type="text" name="apellido" placeholder="Apellido">
+    <p></p>
+    {% endcomment %}
+    <button>Crear</button> 
+  </form>
+
+{% endblock mi_contenido %}

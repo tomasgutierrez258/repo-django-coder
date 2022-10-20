@@ -1,0 +1,12 @@
+{% extends 'home/base.html' %}
+{% block mi_contenido %}
+
+  <form action = {% url 'crear_mascota' %} method = "POST">
+    {% csrf_token %}
+    <table>
+      {{formulario}}
+    </table>
+    <button>Crear</button> 
+  </form>
+
+{% endblock mi_contenido %}

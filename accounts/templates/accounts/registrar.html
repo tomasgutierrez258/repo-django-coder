@@ -1,0 +1,11 @@
+{% extends 'home/base.html' %}
+
+{% block mi_contenido %}
+<form action = {% url 'registrar' %} method = "POST">
+    {% csrf_token %}
+    <table>
+      {{formulario}}
+    </table>
+    <button>Registrar</button> 
+  </form>
+{% endblock mi_contenido %}

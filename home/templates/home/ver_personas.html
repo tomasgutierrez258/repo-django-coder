@@ -2,28 +2,41 @@
 
 {% block links %} 
   {% load static %}
-  <link href={% static'css/ver_personas.css' %} rel="stylesheet" /> 
+  <link href={% static 'css/styles.css' %} rel="stylesheet" />
+  <link href={% static 'css/ver_personas.css' %} rel="stylesheet" /> 
 {% endblock links %} 
 
 {% block mi_contenido %}
 <p></p>
-<table>
-  <tr class="table-header">
-    <th>#</th>
-    <th>Nombre</th>
-    <th>Apellido</th>
-    <th>Edad</th>
-    <th>Fecha de nacimiento</th>
-  </tr>
+<div class="container">
 
-  {% for persona in personas%}
-  <tr>
-    <td><strong>{{persona.id}}</strong></td>
-    <td>{{persona.nombre}}</td>
-    <td>{{persona.apellido}}</td>
-    <td>{{persona.edad}}</td>
-    <td>{{persona.fecha_nacimiento}}</td>
-  </tr>
-  {% endfor %}
-</table>
+  <form action = {% url 'ver_personas' %} method = "GET">
+    <table>
+      {{formulario}}
+      <button>Buscar</button> 
+    </table>
+  </form>
+
+  <table>
+    <tr class="table-header">
+      <th>#</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Edad</th>
+      <th>Fecha de nacimiento</th>
+    </tr>
+  
+    {% for persona in personas%}
+    <tr>
+      <td><strong>{{persona.id}}</strong></td>
+      <td>{{persona.nombre}}</td>
+      <td>{{persona.apellido}}</td>
+      <td>{{persona.edad}}</td>
+      <td>{{persona.fecha_nacimiento}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+</div>
+
 {% endblock mi_contenido%}

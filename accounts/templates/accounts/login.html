@@ -1,0 +1,11 @@
+{% extends 'home/base.html' %}
+
+{% block mi_contenido %}
+<form action = {% url 'login' %} method = "POST">
+    {% csrf_token %}
+    <table>
+      {{formulario}}
+    </table>
+    <button>Iniciar sesion</button> 
+  </form>
+{% endblock mi_contenido %}
